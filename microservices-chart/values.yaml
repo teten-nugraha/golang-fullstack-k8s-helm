@@ -1,13 +1,13 @@
 userService:
   name: user-service
-  image: teten/myuserapp:0.1.0
+  image: teten/myuserapp:0.3.0
   replicas: 1
   containerPort: 8081
   svcPort: 80
 
 productService:
   name: product-service
-  image: teten/myproduct:0.1.0
+  image: teten/myproduct:0.3.0
   replicas: 1
   containerPort: 8082
   svcPort: 80

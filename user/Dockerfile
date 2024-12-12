@@ -12,7 +12,7 @@ RUN go mod tidy
 COPY . .
 
 # Build the Go application
-RUN GOARCH=amd64 GOOS=linux go build -o app .
+RUN CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -o app .
 
 # Stage 2: Final stage (minimal image)
 FROM alpine:latest

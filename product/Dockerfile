@@ -14,7 +14,7 @@ RUN go mod tidy
 COPY . .
 
 # Build aplikasi Go
-RUN GOARCH=amd64 GOOS=linux go build -o app .
+RUN CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -o app .
 
 # Gunakan base image yang minimal untuk runtime
 FROM alpine:latest
