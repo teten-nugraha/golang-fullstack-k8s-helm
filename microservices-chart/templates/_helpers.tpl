@@ -1,7 +1,15 @@
+{{/*{{- define "service.fullname" -}}*/}}
+{{/*{{ .Release.Name }}-{{ .Values.userService.name }}*/}}
+{{/*{{- end -}}*/}}
+
+{{/*{{- define "product.fullname" -}}*/}}
+{{/*{{ .Release.Name }}-{{ .Values.productService.name }}*/}}
+{{/*{{- end -}}*/}}
+
 {{- define "service.fullname" -}}
-{{ .Release.Name }}-{{ .Values.userService.name }}
+{{ .Values.userService.name }}
 {{- end -}}
 
 {{- define "product.fullname" -}}
-{{ .Release.Name }}-{{ .Values.productService.name }}
+{{ .Values.productService.name }}
 {{- end -}}
