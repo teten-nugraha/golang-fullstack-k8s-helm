@@ -12,7 +12,7 @@ RUN go mod tidy
 COPY . .
 
 # Build the Go application
-RUN go build -o app .
+RUN GOARCH=amd64 GOOS=linux go build -o app .
 
 # Stage 2: Final stage (minimal image)
 FROM alpine:latest
@@ -29,5 +29,5 @@ COPY --from=builder /app/app .
 # Expose the port your app will run on
 EXPOSE 8081
 
-# Command to run the app
-CMD ["./app"]
+# Menjalankan aplikasi Go
+CMD ["/root/app"]

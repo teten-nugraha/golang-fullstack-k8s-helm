@@ -14,7 +14,7 @@ RUN go mod tidy
 COPY . .
 
 # Build aplikasi Go
-RUN go build -o app .
+RUN GOARCH=amd64 GOOS=linux go build -o app .
 
 # Gunakan base image yang minimal untuk runtime
 FROM alpine:latest
@@ -44,4 +44,4 @@ EXPOSE 8082
 ENV ENV=k8s
 
 # Menjalankan aplikasi dengan environment tertentu
-CMD ["sh", "-c", "./app"]
+CMD ["/root/app"]
