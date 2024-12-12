@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "product.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.productService.name }}
+spec:
+  replicas: {{ .Values.productService.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.productService.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.productService.name }}
+    spec:
+      containers:
+        - name: {{ .Values.productService.name }}
+          image: {{ .Values.productService.image }}
+          ports:
+            - containerPort: {{ .Values.productService.containerPort }}

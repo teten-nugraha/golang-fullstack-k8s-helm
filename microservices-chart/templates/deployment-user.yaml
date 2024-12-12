@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "service.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.userService.name }}
+spec:
+  replicas: {{ .Values.userService.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.userService.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.userService.name }}
+    spec:
+      containers:
+        - name: {{ .Values.userService.name }}
+          image: {{ .Values.userService.image }}
+          ports:
+            - containerPort: {{ .Values.userService.containerPort }}

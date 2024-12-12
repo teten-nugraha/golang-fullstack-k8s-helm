@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "product.fullname" . }}
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+    - port: {{ .Values.productService.svcPort }}
+      targetPort: {{ .Values.productService.containerPort }}
+  selector:
+    app: {{ .Values.productService.name }}
